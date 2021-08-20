@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .massge {
+        color: red;
+    }
+    
+    .massge1 {
+        color: blue;
+    }
+    
+    .v-enter-active {
+        transition: opacity 3s;
+    }
+    
+    .v-enter {
+        opacity: 0;
+    }
+    
+    .v-enter-to {
+        opacity: 1;
+    }
+</style>
+
+
+
+<body>
+    <div class="frame_inner">
+        <div id="app">
+            <p :class="css" v-if="out_service">現在は営業時間外です</p>
+            <div :class="cssNew" v-else>
+                営業しています
+                <img v-bind:src="imgName">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+    <script>
+        var today = new Date();
+        var hour = today.getHours();
+        hour = 21;
+
+        var app = new Vue({
+            el: "#app",
+            data: {
+                out_service: (hour > 20),
+                css: "massge",
+                // out_service: true,
+                cssNew: "massge1",
+                imgName: "img.png"
+            }
+        });
+    </script>
+</body>
+
+</html>
